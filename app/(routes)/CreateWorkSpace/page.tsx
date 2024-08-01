@@ -6,9 +6,9 @@ import { Loader2Icon, SmilePlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CoverPicker from '@/app/_comoponents/CoverPicker';
 import EmojiPickerComponent from '@/app/_comoponents/EmojiPicker';
+import { useAuth, useUser } from '@clerk/nextjs';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '@/config/firebaseConfig';
-import { useAuth, useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import uuid4 from "uuid4";
 
@@ -39,6 +39,7 @@ function CreateWorkSpace() {
                 coverUrl: null,
                 emoji: null,
                 id: docId,
+                documentName:'Untitled Document',
                 documentOutput: []
             });
             await setDoc(doc(db, 'documentId', docId), {
@@ -59,7 +60,7 @@ function CreateWorkSpace() {
                 {/* Cover Image */}
                 <CoverPicker setNewCover={(v: string) => setCoverImage(v)}>
                     <div className='relative group cursor-pointer'>
-                        <h1 className='hidden group-hover:flex absolute p-4 w-full h-full items-center justify-center'>Change Image</h1>
+                        <h1 className='hidden group-hover:flex absolute p-4 w-full h-full items-center justify-center text-white bg-black bg-opacity-50'>Change Image</h1>
                         <div>
                             <Image src={coverImage} alt='coverImage' width={400} height={400} className='w-full h-[150px] object-cover rounded-lg group-hover:opacity-50' />
                         </div>
