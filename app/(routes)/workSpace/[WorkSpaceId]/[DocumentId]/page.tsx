@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import SideNav from '../../_components/SideNav';
 import { useRouter } from 'next/navigation';
+import { DocumentEditor } from '../../_components/DocumentEditor';
 // Define a type for params if you know the specific properties
 interface Params {
   [key: string]: any; // Replace 'any' with specific types if known
@@ -20,8 +21,8 @@ const WorkSpaceDocument: React.FC<WorkSpaceDocumentProps> = ({ params }) => {
         <SideNav  params={params}/>
       </div>
       {/* Document */}
-      <div className='md:ml-72'>
-        Document
+      <div className='md:ml-[20vw]'>
+        <DocumentEditor/>
       </div>
     </div>
   );

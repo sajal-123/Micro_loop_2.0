@@ -91,7 +91,7 @@ const SideNav: React.FC<SideNavProps> = ({ params }) => {
     }
 
     return (
-        <div className='md:w-72 hidden md:block fixed p-5 shadow-md bg-blue-50 h-screen'>
+        <div className='md:w-[20vw] hidden md:block fixed p-5 shadow-md bg-blue-50 h-screen'>
             <div className='flex justify-between items-center'>
                 <Logo />
                 <Bell className='h-5 w-5 text-gray-500' />

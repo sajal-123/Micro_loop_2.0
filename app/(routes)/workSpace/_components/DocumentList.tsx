@@ -4,6 +4,7 @@ import { deleteDoc, doc, DocumentData } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import DocumentOptions from './DocumentOptions';
 import { db } from '@/config/firebaseConfig';
+import { useToast } from '@/components/ui/use-toast';
 interface Params {
     WorkSpaceId?: string;
     DocumentId?: string
@@ -16,9 +17,13 @@ interface SideNavProps {
 }
 
 const DocumentList: React.FC<SideNavProps> = ({ documentList, params }) => {
+    const { toast } = useToast();
     const deletedDocument = async (docId: string) => {
         console.log(docId)
         await deleteDoc(doc(db, 'workSpaceDocument', docId));
+        toast({
+            title: "Docuement Deleted !!!"
+        })
     }
     const router = useRouter();
     return (
