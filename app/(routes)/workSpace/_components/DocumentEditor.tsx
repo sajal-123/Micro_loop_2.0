@@ -2,16 +2,19 @@ import React from 'react'
 import DocumentHeader from './DocumentHeader'
 import DocumentInfo from './DocumentInfo'
 
-const DocumentEditor = () => {
+interface Params {
+    [key: string]: any; // Replace 'any' with specific types if known
+}
+const DocumentEditor = (params: Params) => {
     return (
         <div className='md:w-[80vw]'>
             {/* Header */}
-            <DocumentHeader/>
+            <DocumentHeader />
 
             {/* DocuemntInfo */}
-            <DocumentInfo/>
+            <DocumentInfo params={params} />
             {/* Rich Text Editor */}
-            
+
         </div>
     )
 }

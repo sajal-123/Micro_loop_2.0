@@ -10,7 +10,7 @@ import { useAuth, useUser } from '@clerk/nextjs';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '@/config/firebaseConfig';
 import { useRouter } from 'next/navigation';
-import uuid4 from "uuid4";
+import uuid4 from 'uuid4';
 
 function CreateWorkSpace() {
     const router = useRouter();

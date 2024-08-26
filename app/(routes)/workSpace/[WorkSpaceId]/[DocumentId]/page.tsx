@@ -22,7 +22,7 @@ const WorkSpaceDocument: React.FC<WorkSpaceDocumentProps> = ({ params }) => {
       </div>
       {/* Document */}
       <div className='md:ml-[20vw]'>
-        <DocumentEditor/>
+        <DocumentEditor params={params}/>
       </div>
     </div>
   );
