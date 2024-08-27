@@ -12,7 +12,6 @@ import React, { useEffect, useState } from 'react'
 interface Params {
     DocumentId: string;
 }
-
 interface DocumentData {
     documentName?: string;
     [key: string]: any; // Additional properties if needed
