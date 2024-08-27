@@ -33,7 +33,7 @@ const SideNav: React.FC<SideNavProps> = ({ params }) => {
     const [loading, setLoading] = useState(false);
     const { user } = useUser();
     const router = useRouter();
-    const { toast } = useToast()
+    const { toast } = useToast();
     const GetDocuments = () => {
         if (!params?.WorkSpaceId) {
             console.error("WorkSpaceId is missing");
@@ -45,7 +45,7 @@ const SideNav: React.FC<SideNavProps> = ({ params }) => {
         const unsubscribe = onSnapshot(q, (querySnapshot: QuerySnapshot<DocumentData>) => {
             const documents: DocumentData[] = [];
             querySnapshot.forEach((doc) => {
-                console.log('Document Data:', doc.data());
+                // console.log('Document Data:', doc.data());
                 documents.push(doc.data());
             });
             setDocumentList(documents);
@@ -89,6 +89,7 @@ const SideNav: React.FC<SideNavProps> = ({ params }) => {
         setLoading(false);
         // router.replace(`/workSpace/${params.WorkSpaceId}/${docId}`);
     }
+
 
     return (
         <div className='md:w-[20vw] hidden md:block fixed p-5 shadow-md bg-blue-50 h-screen'>
