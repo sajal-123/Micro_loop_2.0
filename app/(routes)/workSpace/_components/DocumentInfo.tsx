@@ -91,7 +91,7 @@ function DocumentInfo({ params }: { params: Params }) {
             </CoverPicker>
 
             {/* Emoji Picker */}
-            <div className='absolute ml-10 mt-[-40px] cursor-pointer'>
+            <div className='absolute ml-10  mt-[-40px] cursor-pointer'>
                 <EmojiPickerComponent
                     className='cursor-pointer'
                     setEmojiIcon={(emoji: string) => {
@@ -110,7 +110,7 @@ function DocumentInfo({ params }: { params: Params }) {
             </div>
 
             {/* File Name */}
-            <div className='mt-10 p-10 flex items-center gap-4'>
+            <div className='mt-10 p-10 px-20 flex items-center gap-4'>
                 <input
                     type="text"
                     placeholder="Untitled Document"
