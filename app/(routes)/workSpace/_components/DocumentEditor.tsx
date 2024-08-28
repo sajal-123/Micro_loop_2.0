@@ -15,7 +15,7 @@ const DocumentEditor = (params: Params) => {
             {/* DocuemntInfo */}
             <DocumentInfo params={params} />
             {/* Rich Text Editor */}
-            <RichDocumentEditor/>
+            <RichDocumentEditor params={params}/>
 
         </div>
     )
