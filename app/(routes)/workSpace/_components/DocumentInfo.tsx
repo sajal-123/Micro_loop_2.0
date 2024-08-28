@@ -34,6 +34,7 @@ function DocumentInfo({ params }: { params: Params }) {
             const docsnap = await getDoc(docRef);
             if (docsnap.exists()) {
                 setDocumentInfo(docsnap.data() as DocumentData);
+                // console.log(docsnap.data())
                 setEmoji(docsnap.data()?.emoji)
                 if (docsnap.data()?.coverImage)
                     setCoverImage(docsnap.data()?.coverImage)
@@ -44,14 +45,25 @@ function DocumentInfo({ params }: { params: Params }) {
             console.error("Error fetching document: ", error);
         }
     }
-    const UpdateDocumentInfo = async (key: any, value: any) => {
-        const docRef = doc(db, 'workSpaceDocument', params?.params?.DocumentId)
-        console.log(key)
+   const UpdateDocumentInfo = async (key: any, value: any) => {
+    try {
+        const docRef = doc(db, 'workSpaceDocument', params?.params?.DocumentId);
         await updateDoc(docRef, {
             [key]: value
-        })
-        toast + ("Document Updated!!!")
+        });
+        console.log("Document Updated");
+        toast({
+            title: "Success",
+            description: `${key} updated successfully`,
+          })
+    } catch (error) {
+        console.error("Error updating document:", error);
+        toast({
+            title: "Failure ",
+            description: `fail while updating  ${key}`,
+          })
     }
+}
 
     return (
         <div>
@@ -82,7 +94,10 @@ function DocumentInfo({ params }: { params: Params }) {
             <div className='absolute ml-10 mt-[-40px] cursor-pointer'>
                 <EmojiPickerComponent
                     className='cursor-pointer'
-                    setEmojiIcon={(emoji: string) => setEmoji(emoji)}
+                    setEmojiIcon={(emoji: string) => {
+                        setEmoji(emoji)
+                        UpdateDocumentInfo('emoji', emoji)
+                    }}
                 >
                     <div className="bg-[#ffffffb7] p-4 rounded-md">
                         {emoji ? (
@@ -101,6 +116,9 @@ function DocumentInfo({ params }: { params: Params }) {
                     placeholder="Untitled Document"
                     defaultValue={documentInfo?.documentName || 'Untitled Document'}
                     className='font-bold outline-none text-4xl border'
+                    onBlur={(e)=>{
+                        UpdateDocumentInfo('documentName',e.target.value)
+                        console.log(e.target.value)}}
                 />
                 <Button>+</Button>
             </div>
