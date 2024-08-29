@@ -6,7 +6,8 @@ function CommentBox() {
     const { threads } = useThreads();
 
     return (
-        <div className='w-[300px] shadow-lg h-[350px] rounded-lg'>
+        <div className='w-[300px] h-[350px] shadow-lg 
+    rounded-lg overflow-auto z-30 '>
             {threads.map((thread) => (
                 <Thread key={thread.id} thread={thread} />
             ))}

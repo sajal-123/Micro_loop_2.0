@@ -10,7 +10,7 @@ interface Params {
     [key: string]: any; // Replace 'any' with specific types if known
 }
 const DocumentEditor = (params: Params) => {
-    const [OpenCommentBox,setOpenCommentBox]=useState(false)
+    const [OpenCommentBox, setOpenCommentBox] = useState(false)
     return (
         <div className='md:w-[80vw]'>
             {/* Header */}
@@ -19,14 +19,19 @@ const DocumentEditor = (params: Params) => {
             {/* DocuemntInfo */}
             <DocumentInfo params={params} />
             {/* Rich Text Editor */}
-            <RichDocumentEditor params={params} />
 
+            <div className='grid grid-cols-4'>
+                <div className='col-span-3'>
+                    <RichDocumentEditor params={params} />
 
-            <div className='fixed right-5 bottom-5 z-50'>
-                <Button onClick={()=>setOpenCommentBox(!OpenCommentBox)}>
-                    {OpenCommentBox? <X/>:<MessageCircle />}
-                </Button>
-                    {OpenCommentBox &&  <CommentBox/>}
+                </div>
+
+                <div className='fixed right-5 bottom-5'>
+                    <Button onClick={() => setOpenCommentBox(!OpenCommentBox)}>
+                        {OpenCommentBox ? <X /> : <MessageCircle />}
+                    </Button>
+                    {OpenCommentBox && <CommentBox />}
+                </div>
             </div>
         </div>
     )

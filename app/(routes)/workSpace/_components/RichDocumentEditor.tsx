@@ -218,7 +218,7 @@ function RichDocumentEditor(params: Params) {
   };
 
   return (
-    <div className='lg:-ml-10'>
+    <div className='lg:-ml-10 mr-20'>
       <div id="editorjs" className='' />
     </div>
   );
