@@ -45,25 +45,25 @@ function DocumentInfo({ params }: { params: Params }) {
             console.error("Error fetching document: ", error);
         }
     }
-   const UpdateDocumentInfo = async (key: any, value: any) => {
-    try {
-        const docRef = doc(db, 'workSpaceDocument', params?.params?.DocumentId);
-        await updateDoc(docRef, {
-            [key]: value
-        });
-        console.log("Document Updated");
-        toast({
-            title: "Success",
-            description: `${key} updated successfully`,
-          })
-    } catch (error) {
-        console.error("Error updating document:", error);
-        toast({
-            title: "Failure ",
-            description: `fail while updating  ${key}`,
-          })
+    const UpdateDocumentInfo = async (key: any, value: any) => {
+        try {
+            const docRef = doc(db, 'workSpaceDocument', params?.params?.DocumentId);
+            await updateDoc(docRef, {
+                [key]: value
+            });
+            console.log("Document Updated");
+            toast({
+                title: "Success",
+                description: `${key} updated successfully`,
+            })
+        } catch (error) {
+            console.error("Error updating document:", error);
+            toast({
+                title: "Failure ",
+                description: `fail while updating  ${key}`,
+            })
+        }
     }
-}
 
     return (
         <div>
@@ -114,13 +114,13 @@ function DocumentInfo({ params }: { params: Params }) {
                 <input
                     type="text"
                     placeholder="Untitled Document"
-                    defaultValue={documentInfo?.documentName || 'Untitled Document'}
+                    defaultValue={documentInfo?.documentName && documentInfo?.documentName }
                     className='font-bold outline-none text-4xl border'
-                    onBlur={(e)=>{
-                        UpdateDocumentInfo('documentName',e.target.value)
-                        console.log(e.target.value)}}
+                    onBlur={(e) => {
+                        UpdateDocumentInfo('documentName', e.target.value)
+                        console.log(e.target.value)
+                    }}
                 />
-                <Button>+</Button>
             </div>
         </div>
     )
