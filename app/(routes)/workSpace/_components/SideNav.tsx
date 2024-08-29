@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { Progress } from "@/components/ui/progress"
 import { useToast } from "@/components/ui/use-toast"
 import { ToastAction } from '@/components/ui/toast';
+import NotificationBox from './NotificationBox';
 
 
 // Define a type for Params if you know the specific properties
@@ -95,7 +96,9 @@ const SideNav: React.FC<SideNavProps> = ({ params }) => {
         <div className='md:w-[20vw] hidden md:block fixed p-5 shadow-md bg-blue-50 h-screen'>
             <div className='flex justify-between items-center'>
                 <Logo />
+                <NotificationBox>
                 <Bell className='h-5 w-5 text-gray-500' />
+                </NotificationBox>
             </div>
             <hr className='my-5' />
             <div className='flex justify-between items-center'>

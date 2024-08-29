@@ -70,7 +70,7 @@ export function Room({ children, params }: { children: ReactNode; params: any })
                     return [];
                 }
             }}
-            authEndpoint="/api/liveblocks-auth"
+            authEndpoint={"/api/liveblocks-auth?roomId="+params?.Documentid}
         >
             <RoomProvider id={documentId}>
                 <ClientSideSuspense fallback={<div>Loading…</div>}>
