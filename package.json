@@ -19,6 +19,7 @@
     "@editorjs/list": "^1.10.0",
     "@editorjs/nested-list": "^1.4.3",
     "@editorjs/table": "^2.4.1",
+    "@google/generative-ai": "^0.17.1",
     "@liveblocks/client": "^2.6.0",
     "@liveblocks/node": "^2.6.0",
     "@liveblocks/react": "^2.6.0",

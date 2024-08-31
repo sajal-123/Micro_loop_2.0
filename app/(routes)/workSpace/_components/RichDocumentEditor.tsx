@@ -15,6 +15,7 @@ import SimpleImage from 'simple-image-editorjs';
 import CodeTool from '@editorjs/code';
 import { useUser } from '@clerk/nextjs';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import GenerateAiTemplate from './GenerateAiTemplate';
 
 function RichDocumentEditor(params: Params) {
 
@@ -58,12 +59,10 @@ function RichDocumentEditor(params: Params) {
     const unsubscribe = onSnapshot(docRef, (doc) => {
       if (doc.exists()) {
         const output = doc.data()?.output;
-        console.log("Raw Output:", output);
 
         if (output) {
           try {
             const data = JSON.parse(output);
-            console.log("Parsed Data:", data);
 
             if (!isFetched || doc.data()?.editedBy === user?.primaryEmailAddress?.emailAddress) {
               if (data && ref.current) {
@@ -136,6 +135,13 @@ function RichDocumentEditor(params: Params) {
   return (
     <div className='lg:-ml-10 mr-20'>
       <div id="editorjs" className='' />
+      <div className="fixed bottom-10 md:ml-80 left-0 z-10">
+        <GenerateAiTemplate setGenerateAIOutput={(output) => {
+          if (ref.current) {
+            ref.current.render(output);
+          }
+        }} />
+      </div>
     </div>
   );
 }
