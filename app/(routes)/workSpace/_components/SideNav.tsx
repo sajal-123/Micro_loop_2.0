@@ -15,6 +15,7 @@ import { Progress } from "@/components/ui/progress"
 import { useToast } from "@/components/ui/use-toast"
 import { ToastAction } from '@/components/ui/toast';
 import NotificationBox from './NotificationBox';
+import { LiveblocksProvider, RoomProvider } from "@liveblocks/react";
 
 
 // Define a type for Params if you know the specific properties
@@ -68,8 +69,8 @@ const SideNav: React.FC<SideNavProps> = ({ params }) => {
                 description: "You have reached you maxLimit",
                 action: (
                     <ToastAction className='bg-black text-slate-100' altText="Goto schedule to undo">Upgrade</ToastAction>
-                  ),
-              })
+                ),
+            })
             return;
         }
         setLoading(true)
@@ -96,9 +97,11 @@ const SideNav: React.FC<SideNavProps> = ({ params }) => {
         <div className='md:w-[20vw] hidden md:block fixed p-5 shadow-md bg-blue-50 h-screen'>
             <div className='flex justify-between items-center'>
                 <Logo />
-                <NotificationBox>
-                <Bell className='h-5 w-5 text-gray-500' />
-                </NotificationBox>
+                    {/* <RoomProvider id="your-room-id"> */}
+                        <NotificationBox>
+                            <Bell className='h-5 w-5 text-gray-500' />
+                        </NotificationBox>
+                    {/* </RoomProvider> */}
             </div>
             <hr className='my-5' />
             <div className='flex justify-between items-center'>

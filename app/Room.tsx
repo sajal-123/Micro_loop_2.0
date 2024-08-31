@@ -43,7 +43,7 @@ export function Room({ children, params }: { children: ReactNode; params: any })
                     // Ensure text is defined and is a string before performing operations
                     const searchText = typeof text === "string" ? text.trim() : "";
 
-                    console.log("Searching for text:", searchText);
+                    // console.log("Searching for text:", searchText);
 
                     const q = query(collection(db, "LoopUsers"), where("email", "!=", null));
                     const querySnapshot = await getDocs(q);
@@ -52,25 +52,21 @@ export function Room({ children, params }: { children: ReactNode; params: any })
                     querySnapshot.forEach((doc) => {
                         userList.push(doc.data());
                     });
-
-                    console.log("All users:", userList);
-
+                    // console.log("All users:", userList);
                     if (searchText) {
                         const lowerCaseText = searchText.toLowerCase();
                         userList = userList.filter((user: any) =>
                             user.name.toLowerCase().includes(lowerCaseText)
                         );
                     }
-
-                    console.log("Filtered users:", userList);
-
+                    // console.log("Filtered users:", userList);
                     return userList.map((user: any) => user.email);
                 } catch (error) {
                     console.error("Failed to resolve mention suggestions:", error);
                     return [];
                 }
             }}
-            authEndpoint={"/api/liveblocks-auth?roomId="+params?.Documentid}
+            authEndpoint={"/api/liveblocks-auth?roomId="+params?.DocumentId}
         >
             <RoomProvider id={documentId}>
                 <ClientSideSuspense fallback={<div>Loading…</div>}>

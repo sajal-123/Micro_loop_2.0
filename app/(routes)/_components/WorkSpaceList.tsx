@@ -34,6 +34,7 @@ const WorkSpaceList: React.FC = () => {
       //   console.log(doc.data())
       // });
       const workSpaces = querySnapshot.docs.map((doc) => doc.data());
+      console.log(workSpaces)
       setworkSpacelist(workSpaces);
     } catch (error) {
       console.error('Error fetching workspaces: ', error);

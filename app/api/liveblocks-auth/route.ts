@@ -21,17 +21,15 @@ export async function POST(request: Request) {
         }
 
         const userEmail = user.primaryEmailAddress?.emailAddress;
-
         if (!userEmail) {
             return new Response("User email is missing", { status: 400 });
         }
         // Start an auth session inside your endpoint
-        const session = liveblocks.prepareSession(userEmail);
+        const session =await liveblocks.prepareSession(userEmail);
         
         const { room } = await request.json();
         const { searchParams } = new URL(request.url);
         const roomId = searchParams.get("roomId");
-        console.log("!!!!!--------",user,userEmail,room,roomId)
 
         if (!roomId) {
             return new Response("Room ID is missing", { status: 400 });
